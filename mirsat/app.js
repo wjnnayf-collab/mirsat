@@ -20,17 +20,32 @@ window.onload = function() {
     });
 
   let counter = 4;
+
+  function addRowToTable(task, num) {
+    let cls = '';
+    if (task.priority === 'عاجل') cls = 'danger';
+    if (task.priority === 'متوسط') cls = 'warn';
+    const row = document.createElement('tr');
+    row.innerHTML = '<td>#00' + num + '</td><td>' + task.name + '</td><td>' + (task.officer||'—') + '</td><td><span class="badge ' + cls + '">' + (task.priority||'عادي') + '</span></td><td><span class="badge green">جارٍ</span></td>';
+    document.getElementById('tasks-body').appendChild(row);
+  }
+
+  const saved = JSON.parse(localStorage.getItem('tasks') || '[]');
+  saved.forEach(function(task) {
+    addRowToTable(task, counter);
+    counter++;
+  });
+
   window.addTask = function() {
     const name = prompt('اسم المهمة:');
     if (!name) return;
     const officer = prompt('المسؤول:');
     const priority = prompt('الأولوية (عاجل / متوسط / عادي):');
-    let cls = '';
-    if (priority === 'عاجل') cls = 'danger';
-    if (priority === 'متوسط') cls = 'warn';
-    const row = document.createElement('tr');
-    row.innerHTML = '<td>#00' + counter + '</td><td>' + name + '</td><td>' + (officer||'—') + '</td><td><span class="badge ' + cls + '">' + (priority||'عادي') + '</span></td><td><span class="badge warn">جارٍ</span></td>';
-    document.getElementById('tasks-body').appendChild(row);
+    const task = { name, officer, priority };
+    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    addRowToTable(task, counter);
     counter++;
   };
 
