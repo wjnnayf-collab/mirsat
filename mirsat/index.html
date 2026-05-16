@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام العمليات الميدانية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="logo">⚔️ نظام العمليات</div>
+    <div class="clock" id="clock">00:00:00</div>
+  </header>
+
+  <!-- الإحصائيات -->
+  <section class="stats">
+    <div class="stat-box">
+      <span class="stat-num" id="task-count">3</span>
+      <span class="stat-label">مهام نشطة</span>
+    </div>
+    <div class="stat-box warn">
+      <span class="stat-num">4</span>
+      <span class="stat-label">تحتاج تدخل</span>
+    </div>
+    <div class="stat-box danger">
+      <span class="stat-num">2</span>
+      <span class="stat-label">طارئة</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">8</span>
+      <span class="stat-label">أفراد ميدانيين</span>
+    </div>
+  </section>
+
+  <!-- جدول المهام -->
+  <section class="tasks-section">
+    <div class="section-header">
+      <h2>📋 المهام الميدانية</h2>
+      <button class="btn" onclick="addTask()">+ إضافة مهمة</button>
+    </div>
+
+    <table class="tasks-table">
+      <thead>
+        <tr>
+          <th>رقم</th>
+          <th>المهمة</th>
+          <th>المسؤول</th>
+          <th>الأولوية</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody id="tasks-body">
+        <tr>
+          <td>#001</td>
+          <td>مراقبة القطاع الشمالي</td>
+          <td>الرقيب أحمد</td>
+          <td><span class="badge danger">عاجل</span></td>
+          <td><span class="badge warn">جارٍ</span></td>
+        </tr>
+        <tr>
+          <td>#002</td>
+          <td>تأمين نقطة التفتيش</td>
+          <td>العريف محمد</td>
+          <td><span class="badge warn">متوسط</span></td>
+          <td><span class="badge green">مكتمل</span></td>
+        </tr>
+        <tr>
+          <td>#003</td>
+          <td>توزيع المستلزمات</td>
+          <td>الجندي خالد</td>
+          <td><span class="badge">عادي</span></td>
+          <td><span class="badge">معلق</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+<div class="weather-bar">
+  <span>🌡️ الطقس: </span>
+  <span id="weather-temp">--</span>
+  <span id="weather-desc" style="margin:0 12px"></span>
+  <span>💧 <span id="weather-humidity">--</span></span>
+  <span style="margin-right:12px">💨 <span id="weather-wind">--</span></span>
+</div>
+  <script src="app.js"></script>
+</body>
+</html>
